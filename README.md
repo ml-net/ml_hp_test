@@ -15,3 +15,7 @@ Restituisce un report delle transazioni eseguite dal cliente indicato. Viene car
 Se viene richiesto un report per un cliente sconosciuto (non presente nella lista di dati) viene restituito un `HTTP 404` con messaggio `Customer not found`.
 Se viene richiesto il tasso di cambio per una valuta non conosciuta viene restituito un `HTTP 400` con messaggio `Currency not valid`.
 Se la richiesta della lista dati non va a buon fine viene restituito un `HTTP 400` con messaggio `Unable to collect Transaction data`, se inveve la lista è vuota viene restituito un `HTTP 404` con messaggio `No Transaction data found`.
+
+# Installazione
+
+L'installazione può avvenire clonando il repository presente su [github](https://github.com/ml-net/ml_hp_test), oppure scaricando l'immagine docker presente sempre a

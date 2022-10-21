@@ -4,6 +4,17 @@ const port = process.env.PORT || 3000
 
 var transactions = [];
 
+/**
+ * Funzione che recupera le informazioni relative alle transazioni.
+ * La funzione può interrogare API, eseguire query su DB, in questo caso viene
+ * semplicemente letto un file csv
+ * Viene popolato l'array transactions che contiene oggetti JSON che rappresentano tuple
+ * relative alle transazioni, con 
+ * - customer_id
+ * - data della transazione
+ * - valore della transazione, con prefisso pari al simbolo della valuta
+ * @returns integer numero di righe, null in caso di errore
+ */
 function getData() {
     try {
         const data = require('fs').readFileSync('./data.csv').toString().split('\n');
@@ -27,6 +38,14 @@ function getData() {
     }
 }
 
+/**
+ * Funzione che restituisce il tasso di cambio in EUR della valuta passata in input
+ * Non viene interrogata una API in questo caso ma il tasso è fisso, tranne per la valuta
+ * fittizia RND che restituisce un tasso random
+ * @param {string} currency indica la sigla standard della valuta 
+ * @returns float valore del tasso di cambio, null in caso di errore
+ */
+
 function getRate(currency) {
     let rateIdx = 0;
     switch (currency) {
@@ -49,10 +68,12 @@ function getRate(currency) {
     return rateIdx;
 }
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
-
+/**
+ * Endpoint /report/{customer} - GET
+ * Recupera (genera) la lista delle transazioni, dopo di che cicla l'array e per ogni tupla
+ * che corrisponde al customer_id isola la valuta, ottiene il tasso di cambio, converte la valuta in EUR 
+ * e aggiorna l'array che conterrà il report, calcolando anche il totale delle transazioni
+ */
 app.get('/report/:customer', (req, res) => {
     if (getData() == null) {
         res.status(400).send("Unable to collect Transaction data");
@@ -97,6 +118,10 @@ app.get('/report/:customer', (req, res) => {
     }
 })
 
+/**
+ * Endpoint /exchangerate/{currency} - GET
+ * Espone come API anche il metodo per ottenere il tasso di cambio della valuta desiderata
+ */
 app.get('/exchangerate/:currency', (req, res) => {
     let rate = getRate(req.params.currency);
     if (rate == null) {
