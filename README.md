@@ -18,4 +18,4 @@ Se la richiesta della lista dati non va a buon fine viene restituito un `HTTP 40
 
 # Installazione
 
-L'installazione può avvenire clonando il repository presente su [github](https://github.com/ml-net/ml_hp_test), oppure scaricando l'immagine docker presente sempre a
+L'installazione può avvenire clonando il repository presente su [github](https://github.com/ml-net/ml_hp_test), oppure scaricando l'immagine docker presente su [dockerhub](https://hub.docker.com/layers/mlnet75/mlnet-repo/pandahome/images/sha256-11403e7dbf9ab6e760e954f3cf881206758d62204e1cef802dad835b0f4db463?context=repo)
