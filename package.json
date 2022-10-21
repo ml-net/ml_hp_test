@@ -1,0 +1,23 @@
+{
+  "name": "homepandatest",
+  "version": "1.0.0",
+  "description": "Test for Home Panda new Dev",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ml-net/ml_hp_test.git"
+  },
+  "author": "Marco Lupi",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/ml-net/ml_hp_test/issues"
+  },
+  "homepage": "https://github.com/ml-net/ml_hp_test#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
